@@ -10,7 +10,8 @@ Tecnicatura Universitaria en Programación a Distancia (TUP AD) · Universidad T
 | **Alumno** | Gustavo Enrique Valenzuela |
 | **Docente titular** | Prof. Gabriela Martínez |
 | **Docentes adjuntos** | Prof. Carolina Bruno · Prof. Mario Raúl López · Prof. Andrea Ramos |
-| **Tablero de gestión** |(https://github.com/users/valenzuelagustavo/projects/1) |
+| **Repositorio** | [valenzuelagustavo/papillon-etl-nexus](https://github.com/valenzuelagustavo/papillon-etl-nexus) |
+| **Tablero de gestión** | [Papillon ETL Nexus - Backlog](https://github.com/users/valenzuelagustavo/projects/1) |
 
 ---
 
@@ -54,4 +55,25 @@ Nexus permite importar comprobantes mediante archivos Excel (`.xlsx`) con ISBN, 
 
 ## Declaración de Uso de IA
 
-_[Se completa en la rama `docs/declaracion-ia`.]_
+Para este trabajo utilicé un asistente de IA generativa (Claude, de Anthropic) como apoyo en la estructuración de la documentación.
+
+### Prompts utilizados y propósito
+
+| Prompt (resumido) | Propósito y justificación |
+|---|---|
+| "Chequeá mis anteriores entregas para comenzar a trabajar en la cuarta entrega." | Revisar la coherencia entre las entregas 1 a 3 y la consigna 4. Permitió detectar que las Historias de Usuario no estaban definidas en ninguna entrega previa. |
+| Pedidos de nombre del repositorio, texto del README y descripción de los Pull Requests. | Ordenar la portada y los mensajes según convenciones profesionales. Las operaciones de Git (ramas, commits, push y merge) las realicé yo con mi cuenta. |
+| "Generame el diagrama del proceso organizativo con la notación BPMN en el estilo descripto por la teoría de la materia", adjuntando los apuntes de la Unidad 5. | Producir un modelo que respete las convenciones de la cátedra. |
+| Redacción de Historias de Usuario, indicadores de control y el documento de la entrega. | Proponer una estructura inicial que luego revisé y ajusté al caso real. |
+
+### Correcciones humanas sobre los resultados
+
+- **Rediseño del proceso BPMN.** La primera versión asumía que la factura llegaba con la mercadería y que Depósito hacía un control físico. Corregí el modelo con el circuito real: material en consignación, declaración mensual de ventas, factura emitida por la editorial sobre lo declarado, y notas de crédito por devoluciones en firme o por errores de facturación. El diagrama se rehízo por completo.
+- **Ajuste de la HU-01 y de este README.** Hablaban de "facturas y remitos" e "ingreso de stock"; los adapté al circuito de consignación y agregué la conciliación contra la declaración de ventas.
+- **Tratamiento de las notas de crédito y del tipo de comprobante.** El diagrama incluía una tarea para "registrar las líneas como crédito", que suponía transformar las cantidades. En Nexus todos los comprobantes se cargan con cantidades enteras positivas, y el código de tipo de comprobante (por ejemplo, 10 para factura en firme o 19 para liquidación de venta) define el movimiento de stock. Ese código lo indica Compras al importar. Eliminé esa tarea, asigné la importación a Compras y sumé las facturas en firme al circuito.
+- **Controles reales del proceso.** Agregué al modelo el cruce de las notas de crédito contra los remitos de devolución y, a los indicadores, controles que se usan en la práctica (descarte de copias duplicadas, unificación de renglones, aviso de aumentos de precio). La conciliación de la liquidación contra la declaración de ventas quedó señalada como mejora propuesta por el proyecto.
+- **Revisión de pares real.** Los Pull Requests los revisó un compañero de la cursada con su propia cuenta.
+
+### Reflexión
+
+La IA fue útil para estructurar y aplicar las convenciones de notación, pero completó con supuestos genéricos lo que no sabía del negocio. Sin la revisión basada en el conocimiento real de la librería, se habría modelado un proceso inexistente. La responsabilidad intelectual sobre todo el contenido es mía.
