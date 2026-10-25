@@ -10,7 +10,7 @@ Tecnicatura Universitaria en Programación a Distancia (TUP AD) · Universidad T
 | **Alumno** | Gustavo Enrique Valenzuela |
 | **Docente titular** | Prof. Gabriela Martínez |
 | **Docentes adjuntos** | Prof. Carolina Bruno · Prof. Mario Raúl López · Prof. Andrea Ramos |
-| **Tablero de gestión** | _[link a GitHub Projects — completar]_ |
+| **Tablero de gestión** |(https://github.com/users/valenzuelagustavo/projects/1) |
 
 ---
 
