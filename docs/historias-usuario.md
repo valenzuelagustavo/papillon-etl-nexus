@@ -15,14 +15,20 @@ Cada historia se vincula con las metas cuantitativas de la Entrega N.º 2 (M1 a 
 ## HU-01 · Convertir facturas y notas de crédito PDF a XLSX para Nexus
 
 **Como** encargado del Departamento Comercial y Compras,
-**quiero** cargar las facturas de consignación y las notas de crédito en PDF que envían las editoriales y obtener un archivo XLSX con el formato de importación de Nexus,
+**quiero** cargar las facturas de liquidación, las facturas en firme y las notas de crédito en PDF que envían las editoriales y obtener un archivo XLSX con el formato de importación de Nexus,
 **para** registrarlas en el sistema sin transcribir los datos a mano.
 
 **Criterios de aceptación**
 - [ ] Se puede seleccionar uno o varios PDF a la vez (hasta 10 por lote).
-- [ ] El sistema distingue si el comprobante es una factura o una nota de crédito.
-- [ ] Las cantidades facturadas se concilian contra la declaración de ventas del mes y las diferencias se informan.
-- [ ] El XLSX generado tiene las columnas que exige Nexus: ISBN, cantidad, precio y descuento.
+- [ ] El sistema identifica la editorial por el encabezado o por el formato de la tabla, y el tipo de comprobante (liquidación de venta, factura en firme o nota de crédito).
+- [ ] Si el PDF trae Original, Duplicado y Triplicado, los ejemplares se cargan una sola vez.
+- [ ] Los renglones repetidos de un mismo código se unifican en una sola línea, sin alterar la cantidad total ni el importe neto.
+- [ ] Cada renglón se valida: precio × cantidad × (1 − descuento) debe coincidir con el importe impreso.
+- [ ] Las notas de crédito se cruzan contra los remitos de devolución y se informan faltantes y sobrantes.
+- [ ] Las cantidades de cada liquidación de venta se concilian contra la declaración de ventas del mes y las diferencias se informan.
+- [ ] Se avisa qué títulos aumentaron de precio más del 15 % desde la última compra.
+- [ ] El XLSX generado tiene las columnas que exige Nexus (ISBN, cantidad, precio y descuento) y las cantidades siempre son enteros positivos.
+- [ ] Al importar en Nexus, Compras indica el código de tipo de comprobante (por ejemplo, 10 para factura en firme y 19 para liquidación de venta), que define el movimiento de stock.
 - [ ] Un lote de 10 comprobantes se procesa en menos de 15 segundos (M1).
 - [ ] El archivo se importa en Nexus sin errores de formato, delimitadores ni tipos de datos (M4).
 
